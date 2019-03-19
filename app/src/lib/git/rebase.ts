@@ -140,6 +140,8 @@ class GitRebaseParser {
         this.totalCommitCount
       } commits`,
       value,
+      count: this.currentCommitCount,
+      total: this.totalCommitCount,
       commitSummary,
     }
   }
@@ -296,6 +298,7 @@ export async function continueRebase(
   }
 
   const rebaseCurrentCommit = await readRebaseHead(repository)
+
   if (rebaseCurrentCommit === null) {
     return RebaseResult.Aborted
   }
